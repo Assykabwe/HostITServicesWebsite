@@ -18,8 +18,9 @@
             <div class="header-icons">
                 <div class="icons">
                     <div class="user-icon">
-                        <a href="account.php" class="icon-link">account
-                        <i class="fa-solid fa-user"></i>
+                        <a href="account.php" class="icon-link">
+                            <p>account</p>
+                            <i class="fa-solid fa-square-check"></i>
                     </div>
                     <a href="cart.php" class="icon-link">
                         <button class="btn">view cart</button>

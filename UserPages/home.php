@@ -20,10 +20,8 @@
                 <div class="slide-text">
                     <h1>Host IT Services</h1>
                     <h2>Bringing you a variety of tech services</h2>
-                    <div class="btn_1">
+                    <div class="btn-container">
                         <a href="services.php" class="btn">Renew Domain</a>
-                    </div>
-                    <div class="btn_2">
                         <a href="support_ticket.php" class="btn">Create Ticket</a>
                     </div>
                 </div>
@@ -34,13 +32,79 @@
         <div class="heading">
             <h1>My Services</h1>
         </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Status</th>
+                        <th>Billing</th>
+                        <th>Date</th>
+                        <th>Billing Cycle</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>example.com</td>
+                        <td>Active</td>
+                        <td>R5 000.00</td>
+                        <td>06/15/2025</td>
+                        <td>Annual</td>
+                        <td><button class="renew-btn">Renew</button></td>
+                    </tr>
+                    <tr>
+                        <td>Web Hosting</td>
+                        <td class="expired">Expired</td>
+                        <td>R42 040.00</td>
+                        <td>09/20/2023</td>
+                        <td>Annual</td>
+                        <td><button class="renew-btn">Renew</button></td>
+                    </tr>
+                    <tr>
+                        <td>Professional Website</td>
+                        <td>Active</td>
+                        <td>R8 000.00</td>
+                        <td>12/20/2025</td>
+                        <td>Monthly</td>
+                        <td><button class="renew-btn">Renew</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
+
     <section class="support">
         <div class="heading">
             <h1>Support Ticket</h1>
         </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Can not access email</td>
+                        <td>High</td>
+                        <td class="open">Open</td>
+                    </tr>
+                    <tr>
+                        <td>How can renew my domain name</td>
+                        <td>Medium</td>
+                        <td class="closed">Closed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="new-ticket">
+            <a href="support_ticket.php" class="btn">New Ticket</a>
+        </div>
     </section>
-
     <?php include '../Components/footer.php';?>
 </body>
 </html>

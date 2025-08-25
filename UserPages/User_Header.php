@@ -18,8 +18,8 @@
             <div class="header-icons">
                 <div class="icons">
                     <div class="user-icon">
-                        <a href="account.php" class="icon-link">
-                            <p>account</p>
+                        <p>account</p>
+                        <a class="icon-link">
                             <i class="fa-solid fa-square-check"></i>
                     </div>
                     <a href="cart.php" class="icon-link">

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="../JS_Script/user_script.js" defer></script>
-    <title>Host IT Services - support ticket page</title>
+    <title>Host IT Services - cart page</title>
 </head>
 <body>
     <?php include '../UserPages/User_Header.php';?>

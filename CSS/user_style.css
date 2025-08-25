@@ -121,11 +121,12 @@ html{
     align-items: center;
     gap: 1rem;
 }
+.header .icons .user-icon{
+    display: flex;
+    gap: 5px; 
+}
 .header .icons .user-icon p{
     color: var(--background-color);
-}
-.header .icons .user-icon p:hover{
-    color: var(--secondary-color);
 }
 .user-icon i,
 .icons i {
@@ -350,6 +351,159 @@ table th {
 .new-ticket {
     text-align: right;
     margin: 15px 5% 0 0;
+}
+/*---------------------SERVICES/WEB HOSTING---------------*/
+.services-container {
+    display: flex;
+    justify-content: center;
+    background-color: #f4f6f9; /* light background */
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Content wrapper */
+.service {
+    display: flex;              /* ✅ ensures sidebar + main-content are side by side */
+    flex-direction: row;        /* ✅ left to right */
+    max-width: 1200px;
+    width: 100%;
+    gap: 30px;
+}
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    flex-shrink: 0; /* keeps sidebar fixed width */
+}
+.sidebar h3 {
+    margin: 20px 0 10px;
+    font-size: 16px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+.sidebar ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li {
+    margin: 8px 0;
+}
+.sidebar ul li a {
+    text-decoration: none;
+    text-align: left;
+    color: #555;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+.sidebar ul li a:hover {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+/* Currency dropdown */
+.sidebar select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+/* Main content (on the right) */
+.main-content {
+    flex: 1;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.main-content h2 {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+.content-section {
+    display: none;
+}
+.content-section.active {
+    display: block;
+}
+
+.sidebar ul li a.active {
+    font-weight: bold;
+    color: #0056b3;
+}
+/* Plans grid */
+.plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+/* Plan cards */
+.plan-card {
+    border: 1px solid #ddd;
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: #fff;
+}
+.plan-card h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    margin-bottom: 15px;
+}
+.plan-card ul {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+    color: #555;
+    margin-bottom: 15px;
+}
+.plan-card ul li {
+    margin: 6px 0;
+}
+/* Price */
+.price {
+    font-weight: bold;
+    margin: 12px 0;
+    font-size: 16px;
+    text-align: left;
+    color: #222;
+}
+/* Order button */
+.order-btn {
+    display: inline-block;
+    background: #28a745;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+.order-btn:hover {
+    background: #218838;
 }
 /*================== Footer Styles ==================*/
 footer {

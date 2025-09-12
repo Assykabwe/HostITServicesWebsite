@@ -12,8 +12,9 @@
             <nav class="navbar" id="menulist">
                 <a href="home.php" class="<?= ($current_page === 'home.php') ? 'active' : '' ?>">home</a>
                 <a href="services.php" class="<?= ($current_page === 'services.php') ? 'active' : '' ?>">services</a>
-                <a href="support_ticket.php" class="<?= ($current_page === 'support_ticket.php') ? 'active' : '' ?>">support ticket</a>
                 <a href="register_domain.php" class="<?= ($current_page === 'register_domain.php') ? 'active' : '' ?>">register domain</a>
+                <a href="transfer_domain.php" class="<?= ($current_page === 'transfer_domain.php') ? 'active' : '' ?>">transfer domain</a>
+                <a href="support_ticket.php" class="<?= ($current_page === 'support_ticket.php') ? 'active' : '' ?>">support ticket</a>
             </nav>
             <!-- Icons -->
             <div class="header-icons">

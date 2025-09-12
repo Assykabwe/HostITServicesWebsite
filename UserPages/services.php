@@ -28,9 +28,9 @@
                 </ul>
                 <h3>Actions</h3>
                 <ul>
-                    <li><a href="#">Register a New Domain</a></li>
-                    <li><a href="#">Transfer in a Domain</a></li>
-                    <li><a href="#">View Cart</a></li>
+                        <li><a href="/HOSTITSERVICESWEBSITE-1/UserPages/register_domain.php">Register a New Domain</a></li>
+                        <li><a href="/HOSTITSERVICESWEBSITE-1/UserPages/transfer_domain.php">Transfer in a Domain</a></li>
+                        <li><a href="/HOSTITSERVICESWEBSITE-1/UserPages/cart.php">View Cart</a></li>
                 </ul>
 
                 <h3>Choose Currency</h3>

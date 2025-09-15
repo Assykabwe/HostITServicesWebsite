@@ -160,6 +160,7 @@ html{
     top: 100%;
     right: 1rem;
     width: 200px;
+    margin-right: 70px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     padding: 1rem;

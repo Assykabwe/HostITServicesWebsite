@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const links = document.querySelectorAll(".sidebar ul li a");
     const sections = document.querySelectorAll(".content-section");
+    const profileBox = document.querySelector('.profile-detail');
 
     links.forEach(link => {
         link.addEventListener("click", function (e) {
@@ -19,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Highlight active link
             this.classList.add("active");
         });
+    });
+
+    // Toggle user-icon
+    const userIcon = document.querySelector('.user-icon i');
+    userIcon?.addEventListener("click", () => {
+        profileBox?.classList.toggle('active');
+        searchForm?.classList.remove('active');
     });
 });
 

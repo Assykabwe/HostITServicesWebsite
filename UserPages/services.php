@@ -127,7 +127,7 @@
                                 <li>Fast Loading Speed</li>
                                 <li>Priority Support</li>
                             </ul>
-                            <div class="price">R2,500.00 ZAR / Monthly</div>
+                            <div class="price">R2,500.00 ZAR</div>
                             <a href="#" class="order-btn">Order Now</a>
                         </div>
 
@@ -186,29 +186,334 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- E-Commerce -->
                 <div id="ecommerce" class="content-section">
                     <h2>E-Commerce Website</h2>
-                    <p>We build secure and scalable e-commerce stores with integrated payment solutions.</p>
-                </div>
+                    <div class="plans">
+                        <div class="plan-card">
+                            <h4>Basic E-Commerce Website</h4>
+                            <ul>
+                                <li>Up to 20 Products</li>
+                                <li>Responsive Design and Mobile-friendly</li>
+                                <li>SEO-Friendly Setup</li>
+                                <li>FREE Business Emails</li>
+                                <li>FREE .co.za Domain</li>
+                                <li>FREE .com Domain</li>
+                                <li>FREE SSL Certificate</li>
+                                <li>Product Categories & Filters</li>
+                                <li>Basic Shopping Cart</li>
+                                <li>Payment Gateway Integration</li>
+                                <li>Website Support</li>
+                            </ul>
+                            <div class="price">R8,500.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
 
+                        <div class="plan-card">
+                            <h4>Standard E-Commerce Website</h4>
+                            <ul>
+                                <li>Up to 50 Products</li>
+                                <li>Responsive Design</li>
+                                <li>SEO-Friendly Setup</li>
+                                <li>FREE Business Emails</li>
+                                <li>FREE Domain of your choice (1 year)</li>
+                                <li>Product Search Functionality</li>
+                                <li>Advanced Shopping Cart</li>
+                                <li>Multiple Payment Options</li>
+                                <li>Shipping Options• Order Tacking</li>
+                                <li>WhatsApp Orders</li>
+                            </ul>
+                            <div class="price">R 15,000.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Professional E-Commerce Website</h4>
+                            <ul>
+                                <li>Up to 200 Products</li>
+                                <li>Responsive Design</li>
+                                <li>SEO-Friendly Setup</li>
+                                <li>FREE Business Emails</li>
+                                <li>FREE Domain (1 year)</li>
+                                <li>Advanced Product Filters</li>
+                                <li>Multi-Currency Support</li>
+                                <li>Custom Checkout</li>
+                                <li>Product Variation</li>
+                                <li>Subscription Product</li>
+                                <li>Shipping Integration</li>
+                                <li>CRM Integration</li>
+                                <li>Wholesale Pricing Groups</li>
+                                <li>API Integration</li>
+                            </ul>
+                            <div class="price">R 25,000.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Social Media -->
                 <div id="social_media" class="content-section">
                     <h2>Social Media Management</h2>
-                    <p>Boost your brand with our professional social media management services.</p>
-                </div>
+                    <div class="plans">
+                        <div class="plan-card">
+                            <h4>Basic Social Media Management</h4>
+                            <ul>
+                                <li>3 posts per week (1 platform)</li>
+                                <li>Basic content creation (graphics & captions)</li>
+                                <li>Hashtag research</li>
+                                <li>Monthly analytics report</li>
+                            </ul>
+                            <div class="price">R2,500.00 ZAR/ Monthly</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
 
+                        <div class="plan-card">
+                            <h4>Digital Essentials</h4>
+                            <ul>
+                                <li>4 posts per week (2 platforms)</li>
+                                <li>Basic content calendar</li>
+                                <li>Hashtag & keyword optimization</li>
+                                <li>Community engagement (comments & DMs - limited)</li>
+                                <li>Monthly report</li>
+                            </ul>
+                            <div class="price">R4,700.00 ZAR/ Monthly</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Startup Boost</h4>
+                            <ul>
+                                <li>5 posts per week (2 platforms)</li>
+                                <li>Basic ad setup and monitoring</li>
+                                <li>Hashtag research and content optimization</li>
+                                <li>engagement management</li>
+                                <li>Monthly strategy call</li>
+                            </ul>
+                            <div class="price">R6,500.00 ZAR/ Monthly</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Launch Pad</h4>
+                            <ul>
+                                <li>5 posts per week (3 platforms)</li>
+                                <li>Video content (1 short-form video per week)</li>
+                                <li>Ad campaign setup (limited budget)</li>
+                                <li>Engagement & growth tracking</li>
+                                <li>Monthly performance call</li>
+                            </ul>
+                            <div class="price">R8,300.00 ZAR/ Monthly</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Branding -->
                 <div id="branding" class="content-section">
                     <h2>Branding Design</h2>
-                    <p>Create a strong identity with our branding and logo design services.</p>
-                </div>
+                    <div class="plans">
+                        <div class="plan-card">
+                            <h4>Standard Branding Package</h4>
+                            <ul>
+                                <li>A unique logo that represents your brand</li>
+                                <li>Custom Logo Design</li>
+                                <li>Professional design for your business cards</li>
+                                <li>Business Card Design</li>
+                                <li>Matching stationery for a polished look</li>
+                                <li>Letterhead & Envelope Design</li>
+                                <li>Profile and cover designs for Facebook, Instagram, and LinkedIn</li>
+                                <li>Social Media Kit</li>
+                                <li>We will fine-tune your designs to perfection</li>
+                                <li>3 Revisions</li>
+                                <li>Fast and reliable service</li>
+                                <li>Delivery in 5-7 Business Days</li>
+                            </ul>
+                            <div class="price">R4,500.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
 
+                        <div class="plan-card">
+                            <h4>Comprehensive Branding Package</h4>
+                            <ul>
+                                <li> A standout logo for your brand</li>
+                                <li>Custom Logo Design</li>
+                                <li>Define your brand’s colors, fonts, and tone of voice</li>
+                                <li>Brand Style Guide</li>
+                                <li>Professional and eye-catching design</li>
+                                <li>Business Card Design</li>
+                                <li>Cohesive stationery suite</li>
+                                <li>Letterhead, Envelope, & Email Signature Design</li>
+                                <li>Profile and cover designs for all major platforms</li>
+                                <li>Social Media Kit</li>
+                                <li>A 2-page design to showcase your services</li>
+                                <li> Brochure or Flyer Design</li>
+                                <li>We will work with you until you are 100% satisfied</li>
+                                <li>5 Revisions</li>
+                                <li>High-quality designs delivered on time</li>
+                                <li>Delivery in 7-10 Business Days</li>
+                            </ul>
+                            <div class="price">R8,000.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Professional Branding Package</h4>
+                            <ul>
+                                <li>A unique and memorable logo (Custom Logo Design)</li>
+                                <li>Full guidelines for consistent branding </li>
+                                <li>Premium design for your business cards</li>
+                                <li>Business Card Design</li>
+                                <li>Complete stationery suite (Letterhead, Envelope, & Email Signature Design)</li>
+                                <li>Profile and cover designs for all platforms </li>
+                                <li>Media Kit</li>
+                                <li>Up to 6 pages of professional design</li>
+                                <li>Brochure Catalog Design</li>
+                                <li>Design for one product</li>
+                                <li>packaging (e.g., box or label)</li>
+                                <li>We will refine your designs until they are perfect</li>
+                                <li>Unlimited Revisions</li>
+                                <li>Comprehensive and detailed work</li>
+                                 <li>in 10-14 Business Days</li>
+                            </ul>
+                            <div class="price">R15,000.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Brand Style Guide</h4>
+                            <ul>
+                                <li> A comprehensive guide defining your brand’s colors, fonts, and tone of voice.</li>
+                                <li>3 revisions included</li>
+                                <li>Digital PDF file</li>
+                                <li>Delivery in 5-7 business days</li>
+                            </ul>
+                            <div class="price">R2,500.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Graphic Design -->
                 <div id="graphic" class="content-section">
-                    <h2>Graphic Design</h2>
-                    <p>High-quality graphics for digital and print to elevate your brand presence.</p>
+                    <h2>Quality Graphic Designs and Branding Solutions</h2>
+                    <div class="plans">
+                        <div class="plan-card">
+                            <h4>Logo Design</h4>
+                            <ul>
+                                <li>Custom logo design tailored to your brand.</li>
+                                <li>2 revisions included</li>
+                                <li>Vector file formats (AI, EPS, PDF)</li>
+                                <li>Transparent background PNG</li>
+                                <li>Delivery in 3-5 business days</li>
+                            </ul>
+                            <div class="price">R500.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Business Card Design</h4>
+                            <ul>
+                                <li>Professional business card design (front and back)</li>
+                                <li>2 revisions included</li>
+                                <li>Print-ready files (PDF, PNG)</li>
+                                <li>Delivery in 2-3 business days</li>
+                                <li>+R50 For Any additional Changes</li>
+                            </ul>
+                            <div class="price">R350.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Poster Design</h4>
+                            <ul>
+                                <li>Custom poster design for events, promotions, or advertisements.</li>
+                                <li>2 revisions included</li>
+                                <li>Print-ready files (PDF, PNG)</li>
+                                <li>Delivery in 3-5 business days</li>
+                                <li> +R100 For Each additional poster</li>
+                            </ul>
+                            <div class="price">R350.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+
+                        <div class="plan-card">
+                            <h4>Flyer Design</h4>
+                            <ul>
+                                <li>1-15 Website Pages</li>
+                                <li>Responsive Design (Mobile-Friendly)</li>
+                                <li>SEO-Friendly Setup</li>
+                                <li>FREE Business Emails</li>
+                                <li>FREE Domain of your Choice (1 Year)</li>
+                            </ul>
+                            <div class="price">R350.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                        <div class="plan-card">
+                            <h4>Flyer Design</h4>
+                            <ul>
+                                <li>Custom flyer design (single or double-sided)</li>
+                                <li>2 revisions included</li>
+                                <li>Print-ready files (PDF, PNG)</li>
+                                <li>Delivery in 3-5 business days</li>
+                                <li>+R100 For Each additional Flyer Design</li>
+                            </ul>
+                            <div class="price">R350.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                        <div class="plan-card">
+                            <h4>Company Letter Head Design</h4>
+                            <ul>
+                                <li>Professional letterhead and envelope design</li>
+                                <li>2 revisions included</li>
+                                <li>Print-ready files (PDF, PNG)</li>
+                                <li>Delivery in 3-5 business days</li>
+                            </ul>
+                            <div class="price">R500.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                        <div class="plan-card">
+                            <h4>Social Media Kit Design</h4>
+                            <ul>
+                                <li>Profile and cover designs for Facebook, Instagram, and LinkedIn</li>
+                                <li>3 revisions included</li>
+                                <li>High-resolution files (PNG, JPG)</li>
+                                <li>Delivery in 5-7 business days</li>
+                            </ul>
+                            <div class="price">R450.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                        <div class="plan-card">
+                            <h4>Brochure Design</h4>
+                            <ul>
+                                <li>Custom brochure design (up to 2 pages)</li>
+                                <li>3 revisions included</li>
+                                <li>Print-ready files (PDF)</li>
+                                <li>Delivery in 5-7 business days</li>
+                                <li>+R500 For Any additional Page</li>
+                            </ul>
+                            <div class="price">R2,000.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                        <div class="plan-card">
+                            <h4>Packaging Design</h4>
+                            <ul>
+                                <li>Custom design for one product packaging (e.g., box, label, or bag)</li>
+                                <li>3 revisions included</li>
+                                <li>Print-ready files (PDF, AI)</li>
+                                <li>Delivery in 7-10 business days</li>
+                            </ul>
+                            <div class="price">R3,000.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                        <div class="plan-card">
+                            <h4>Email Signature Design</h4>
+                            <ul>
+                                <li>Professional & Custom Email Signature Design</li>
+                                <li>Includes 1 Revision</li>
+                                <li>Delivered in Both HTML & Image Formats (for easy integration)</li>
+                                <li>1-2 Business Days</li>
+                            </ul>
+                            <div class="price">R300.00 ZAR</div>
+                            <a href="#" class="order-btn">Order Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

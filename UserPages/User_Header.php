@@ -19,8 +19,7 @@
                 <div class="icons">
                     <div class="user-icon">
                         <p>account</p>
-                        <a class="icon-link">
-                            <i class="fa-solid fa-square-check"></i>
+                        <i class="fa-solid fa-square-check"></i>
                     </div>
                     <a href="cart.php" class="icon-link">
                         <button class="btn">view cart</button>
@@ -29,6 +28,16 @@
                         <i class="fa-solid fa-bars"></i>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile-detail">
+            <h3>Sign up or Sign in</h3>
+            <div class="flex-btn">
+                <a href="../Components/login.php" class="btn">Login</a>
+                <a href="../Components/register.php" class="btn">Register</a>
+                <p>Forget password?</p>
             </div>
         </div>
     </section>

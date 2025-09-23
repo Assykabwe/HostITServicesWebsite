@@ -1025,6 +1025,71 @@ footer {
     border-radius: 4px;
   }
   
+  .checkout-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .checkout-tabs .tab {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .checkout-tabs .tab.active {
+    background-color: #0073e6;
+    color: white;
+  }
+  
+  .cart-status {
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .promo-code-form {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .promo-code-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+  }
+  
+  .promo-code-form .btn {
+    padding: 0.5rem 1rem;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .order-summary-box {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  
+  .order-summary-box p {
+    margin: 0.5rem 0;
+  }
+  
+  .checkout-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
   
 
   

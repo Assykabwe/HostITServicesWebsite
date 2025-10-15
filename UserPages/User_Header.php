@@ -12,9 +12,6 @@
             <nav class="navbar" id="menulist">
                 <a href="home.php" class="<?= ($current_page === 'home.php') ? 'active' : '' ?>">home</a>
                 <a href="services.php" class="<?= ($current_page === 'services.php') ? 'active' : '' ?>">services</a>
-                <a href="register_domain.php" class="<?= ($current_page === 'register_domain.php') ? 'active' : '' ?>">register domain</a>
-                <a href="transfer_domain.php" class="<?= ($current_page === 'transfer_domain.php') ? 'active' : '' ?>">transfer domain</a>
-                <a href="review_cart.php" class="<?= ($current_page === 'review_cart.php') ? 'active' : '' ?>">review cart</a>
                 <a href="support_ticket.php" class="<?= ($current_page === 'support_ticket.php') ? 'active' : '' ?>">support ticket</a>
             </nav>
             <!-- Icons -->
@@ -24,7 +21,7 @@
                         <p>account</p>
                         <i class="fa-solid fa-square-check"></i>
                     </div>
-                    <a href="cart.php" class="icon-link">
+                    <a href="../UserPages/services.php" data-target="view_cart" class="icon-link">
                         <button class="btn">view cart</button>
                     </a>
                     <div class="menu-bar">

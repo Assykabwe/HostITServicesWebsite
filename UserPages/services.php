@@ -28,9 +28,9 @@
                 </ul>
                 <h3>Actions</h3>
                 <ul>
-                        <li><a href="/HOSTITSERVICESWEBSITE-1/UserPages/register_domain.php">Register a New Domain</a></li>
-                        <li><a href="/HOSTITSERVICESWEBSITE-1/UserPages/transfer_domain.php">Transfer in a Domain</a></li>
-                        <li><a href="/HOSTITSERVICESWEBSITE-1/UserPages/cart.php">View Cart</a></li>
+                        <li><a href="#" data-target="register_domain">Register a New Domain</a></li>
+                        <li><a href="#" data-target="tansfer_domain">Transfer in a Domain</a></li>
+                        <li><a href="#" data-target="view_cart">View Cart</a></li>
                 </ul>
 
                 <h3>Choose Currency</h3>
@@ -513,6 +513,97 @@
                             <div class="price">R300.00 ZAR</div>
                             <a href="#" class="order-btn">Order Now</a>
                         </div>
+                    </div>
+                </div>
+                <!--- Register a New Domain -->
+                <div id="register_domain" class="content-section">
+                    <h1>Register Domain</h1>
+                    <h2>Starter Web Hosting</h2>
+                    <p>Find your new domain name. Enter your name or keywords below to check availability.</p>
+
+                    <form class="domain-search-form">
+                        <input type="text" placeholder="Find your new domain name" required />
+                        <button type="submit" class="btn">Search</button>
+                    </form>
+
+                    <div class="domain-options">
+                        <div class="domain-card">
+                        <h3>.com</h3>
+                        <p>R300.00/yr</p>
+                        </div>
+                        <div class="domain-card">
+                        <h3>.net</h3>
+                        <p>R368.44/yr</p>
+                        </div>
+                    </div>
+
+                    <ul class="domain-tabs">
+                        <li class="active">Popular</li>
+                        <li>New</li>
+                        <li>Cheap</li>
+                        <li>Transfer</li>
+                        <li>Renewal</li>
+                    </ul>
+
+                    <div class="promo-section">
+                        <div class="promo-box">
+                            <h4>Add Web Hosting</h4>
+                            <p>You can add web hosting to your domain purchase by selecting a hosting package.</p>
+                            <a href="services.php" class="btn">Explore Packages Now</a>
+                        </div>
+                        <div class="promo-box">
+                            <h4>Transfer your domain to us</h4>
+                            <p>Transfer your domain to us and extend your domain by 1 year.</p>
+                            <a href="transfer_domain.php" class="btn">Transfer a Domain</a>
+                        </div>
+                    </div>
+                </div>
+                <!--- Transfer in a Domain -->
+                <div id="tansfer_domain" class="content-section">
+                    <h2>Transfer Your Domain</h2>
+                    <p>Transfer now to extend your domain by 1 year!*</p>
+
+                    <form class="domain-transfer-form">
+                    <div class="form-group">
+                        <label for="domain">Domain Name</label>
+                        <input type="text" id="domain" name="domain" placeholder="example.com" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="auth-code">Authorization Code</label>
+                        <input type="text" id="auth-code" name="auth_code" placeholder="Enter your Auth Code" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="epp-code">EPP Code / Auth Code</label>
+                        <input type="text" id="epp-code" name="epp_code" placeholder="Enter your EPP Code" required />
+                    </div>
+
+                    <button type="submit" class="btn">Add to Cart</button>
+                    </form>
+                </div>
+                <!--- View Cart  -->
+                <div id="view_cart" class="content-section">
+                    <h2>Check & Order</h2>
+                    <div class="checkout-tabs">
+                        <button class="tab active">Product/Options</button>
+                        <button class="tab">Price/Cycle</button>
+                    </div>
+
+                    <div class="cart-status">
+                        <p>Your Shopping Cart is Empty</p>
+                    </div>
+
+                    <form class="promo-code-form">
+                        <input type="text" placeholder="Enter Promo Code" />
+                        <button type="submit" class="btn">Validate Code</button>
+                    </form>
+
+                    <div class="order-summary-box">
+                        <p><strong>Total:</strong> R0.00 ZAR</p>
+                        <p><strong>Total Due Today:</strong> R0.00 ZAR</p>
+                        <button class="btn checkout-btn">Checkout</button>
+                        <p>contibue shopping</p>
                     </div>
                 </div>
             </div>

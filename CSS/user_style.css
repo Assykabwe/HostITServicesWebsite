@@ -852,6 +852,244 @@ footer {
     background-color: #218838;
   }
 
+/* Layout container */
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 250px;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-right: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sidebar h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #0073e6;
+  }
+  
+  .sidebar select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Main content styling */
+  .main-content {
+    flex: 1;
+    min-width: 300px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .main-content h1,
+  .main-content h2 {
+    margin-top: 0;
+    color: #222;
+  }
+  
+  .domain-search-form {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .domain-search-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+  }
+  
+  .domain-search-form .btn {
+    padding: 0.5rem 1rem;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .domain-options {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .domain-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #fff;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .domain-tabs {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  .domain-tabs li {
+    padding: 0.5rem 1rem;
+    background-color: #eee;
+    cursor: pointer;
+  }
+  
+  .domain-tabs li.active {
+    background-color: #0073e6;
+    color: white;
+  }
+  
+  .promo-section {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .promo-box {
+    flex: 1;
+    background-color: #f0f8ff;
+    padding: 1rem;
+    border: 1px solid #ccc;
+  }
+  
+  .promo-box h4 {
+    margin-top: 0;
+  }
+  
+  .promo-box .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #0073e6;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  .content-section {
+    display: none;
+  }
+  
+  .content-section.active {
+    display: block;
+  }
+
+  .captcha-group {
+    margin-top: 1.5rem;
+  }
+  
+  .captcha-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .captcha-code {
+    background-color: #0073e6;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    user-select: none;
+  }
+  
+  .captcha-row input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .checkout-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .checkout-tabs .tab {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .checkout-tabs .tab.active {
+    background-color: #0073e6;
+    color: white;
+  }
+  
+  .cart-status {
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .promo-code-form {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .promo-code-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+  }
+  
+  .promo-code-form .btn {
+    padding: 0.5rem 1rem;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .order-summary-box {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  
+  .order-summary-box p {
+    margin: 0.5rem 0;
+  }
+  
+  .checkout-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
   
 
   

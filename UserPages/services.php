@@ -517,8 +517,10 @@
                 </div>
                 <!--- Register a New Domain -->
                 <div id="register_domain" class="content-section">
-                    <h1>Register Domain</h1>
-                    <h2>Starter Web Hosting</h2>
+                    <div class="heading-row">
+                        <h2>Register Domain</h2>
+                        <h3>Starter Web Hosting</h3>
+                    </div>
                     <p>Find your new domain name. Enter your name or keywords below to check availability.</p>
 
                     <form class="domain-search-form">
@@ -528,11 +530,11 @@
 
                     <div class="domain-options">
                         <div class="domain-card">
-                        <h3>.com</h3>
+                        <img src="../Images/com.png" alt=".com">
                         <p>R300.00/yr</p>
                         </div>
-                        <div class="domain-card">
-                        <h3>.net</h3>
+                        <div class="domain-cards">
+                        <img src="../Images/net.png" alt=".net">
                         <p>R368.44/yr</p>
                         </div>
                     </div>
@@ -549,7 +551,7 @@
                         <div class="promo-box">
                             <h4>Add Web Hosting</h4>
                             <p>You can add web hosting to your domain purchase by selecting a hosting package.</p>
-                            <a href="services.php" class="btn">Explore Packages Now</a>
+                            <a href="services.php" class="btns">Explore Packages Now</a>
                         </div>
                         <div class="promo-box">
                             <h4>Transfer your domain to us</h4>
@@ -583,28 +585,132 @@
                     </form>
                 </div>
                 <!--- View Cart  -->
-                <div id="view_cart" class="content-section">
-                    <h2>Check & Order</h2>
-                    <div class="checkout-tabs">
-                        <button class="tab active">Product/Options</button>
-                        <button class="tab">Price/Cycle</button>
+                <div id= "view_cart"  class="content-section active">
+                    <h2>Review & Checkout</h2>
+
+                    <div class="cart-content-wrapper">
+                        <div class="cart-details">
+                            <div class="product-table-header">
+                                <div class="header-item product-col">Product/Options</div>
+                                <div class="header-item price-col">Price/Cycle</div>
+                            </div>
+                            
+                            <div class="empty-cart-message">
+                                Your Shopping Cart is Empty
+                            </div>
+
+                            <hr class="cart-divider">
+
+                            <div class="promo-code-section">
+                                <h4>Apply Promo Code</h4>
+                                <div class="promo-input-group">
+                                    <input type="text" placeholder="Enter promo code if you have one" class="promo-input" />
+                                    <button type="button" class="validate-btn">Validate Code</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+                            <div class="summary-line">
+                                <span>SubTotal</span>
+                                <span class="price">R0.00 ZAR</span>
+                            </div>
+                            <hr>
+                            <div class="summary-line totals-line">
+                                <span>Totals</span>
+                                <span class="price">R0.00 ZAR</span>
+                            </div>
+                            <div class="due-today-line">
+                                Total Due Today
+                            </div>
+                            <button class="checkout-btn">
+                                Checkout <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                            <div class="continue-shopping">
+                                <a href="#">Continue shopping</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--- checkout  ---->
+                <div class="content-section">
+                    <h2>Checkout</h2>
+                    <div class="newaccount">
+                        <p class="instruction-text">Please enter your personal details and billing information to checkout.</p>
+                        <button class="create-account-btn">Create a New Account</button>
+                    </div>
+                    
+                    <div class="alert alert-danger" role="alert">
+                        <p>Please correct the following errors before continuing:</p>
+                        <ul>
+                            <li><strong>Login Details Incorrect.</strong> Please try again.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="customer-login-section">
+                        <h3>Existing Customer Login</h3>
+                        <form id="existing-customer-login-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="email" id="email-address" placeholder="Email Address" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="password" placeholder="Password" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="login">Login</button>
+                        </form>
                     </div>
 
-                    <div class="cart-status">
-                        <p>Your Shopping Cart is Empty</p>
+                    <hr class="separator">
+
+                    <div class="payment-details-section">
+                        <h3>Payment Details</h3>
+                        
+                        <div class="total-due-box">
+                            Total Due Today: <strong></strong>
+                        </div>
+                        
+                        <p class="payment-instruction">Please choose your preferred method of payment.</p>
+
+                        <div class="payment-options">
+                            <label class="radio-label">
+                                <input type="radio" name="payment-method" value="bank-transfer" checked>
+                                Bank Transfer
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="payment-method" value="paypal">
+                                PayPal Basic
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="payment-method" value="mail-in">
+                                Mail In Payment
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="additional-notes-section">
+                        <h3>Additional Notes</h3>
+                        <textarea id="additional-notes" rows="4" placeholder="You can enter any additional notes or information you want included with your order here..."></textarea>
+                    </div>
+                    
+                    <div class="mailing-list-section">
+                        <h3>Join our mailing list</h3>
+                        <p>We would like to send you occasional news, information and special offers by email. Choose below whether you want to join our mailing list. You can unsubscribe at any time.</p>
+                        <div class="mailing-list-toggle">
+                            <input type="checkbox" id="mailing-list" checked>
+                            <label for="mailing-list" class="yes-label">Yes</label>
+                        </div>
                     </div>
 
-                    <form class="promo-code-form">
-                        <input type="text" placeholder="Enter Promo Code" />
-                        <button type="submit" class="btn">Validate Code</button>
-                    </form>
-
-                    <div class="order-summary-box">
-                        <p><strong>Total:</strong> R0.00 ZAR</p>
-                        <p><strong>Total Due Today:</strong> R0.00 ZAR</p>
-                        <button class="btn checkout-btn">Checkout</button>
-                        <p>contibue shopping</p>
+                    <div class="complete-order-container">
+                        <button type="submit" class="btn">
+                            Complete Order <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
+
                 </div>
             </div>
         </div>

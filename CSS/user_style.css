@@ -527,12 +527,7 @@ table th {
     border-radius: 10px;
     transition: all 0.3s ease;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-.plan-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    background: #fff;
+    /*box-shadow: 0 2px 5px rgba(0,0,0,0.05);*/
 }
 .plan-card h4 {
     font-size: 18px;
@@ -665,21 +660,183 @@ table th {
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
+  /* =========================================
+   Review & Checkout Styling (Customized)
+   ========================================= */
+   /* Each item card */
+.cart-content .plan-card {
+    display: flex;
+    justify-content: space-between; /* Keep product info left, price right */
+    align-items: flex-start;
+    gap: 15px; /* optional spacing between columns */
+}
+.cart-content .plan-card.highlight {
+    background-color: #f0f8ff; /* light highlight for recently added items */
+}
+/* Left column: Product / Service Info */
+.cart-content .plan-card .product-col {
+    display: flex;
+    flex-direction: column; /* Stack name + quantity vertically */
+}
+.cart-content .plan-card .product-col small {
+    display: block;
+    font-weight: normal;
+    color: #666;
+    margin-top: 2px;
+}
+/* Quantity controls */
+.cart-content .plan-card .quantity-controls {
+    /*display: flex;
+    align-items: center;
+    gap: 5px;*/
+    margin-top: 8px;
+}
+.cart-content .plan-card .quantity-controls button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+.cart-content .plan-card .quantity-controls button:hover {
+    background: #e0e0e0;
+}
+.cart-content .plan-card .quantity-controls .quantity {
+    min-width: 24px;
+    text-align: center;
+}
+/* Right column: Price and Remove */
+.cart-content .plan-card .price-col {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+    color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+.cart-content .plan-card .price-col button.remove-btn {
+    background: transparent;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-decoration: underline;
+    padding: 0;
+}
+.cart-content .plan-card .price-col button.remove-btn:hover {
+    color: #a71d2a;
+}
+/* --- General Layout --- */
+.content-section h2 {
+    color: var(--secondary-color); /* Blue title */
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
 .cart-content-wrapper {
     display: flex;
-    gap: 20px; /* Space between cart details and summary */
-    flex-wrap: wrap; /* Allows wrap on smaller screens */
+    gap: 25px; /* Space between cart details and summary */
+    flex-wrap: wrap; 
 }
-
-.cart-details {
+/* --- Cart Details (Left Column) --- */
+.cart-content-wrapper .cart-details {
     flex: 2; /* Takes up more space than the summary */
     min-width: 300px; /* Minimum width before wrapping */
 }
-
+/* Product Table Header (Blue/Teal Bar) */
+.product-table-header {
+    display: flex;
+    background-color: #3b97b0; /* Teal/Blue color for the header (from image) */
+    color: var(--background-color); /* White text */
+    font-weight: bold;
+    padding: 12px 15px;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.header-item.product-col {
+    flex: 2;
+}
+.header-item.price-col {
+    flex: 1;
+    text-align: right;
+}
+/* Container for all rendered items */
+.cart-content {
+    border: 1px solid #ddd;
+    border-top: none;
+    background: var(--background-color);
+}
+/* Styling for product name/info */
+.product-info-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.product-name {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--main-color);
+    line-height: 1.4;
+    flex: 2;
+}
+/* Price and Cycle Info (R350.00 ZAR / One Time) */
+.product-price-details {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+    color: var(--main-color);
+}
+.product-price-details small {
+    display: block;
+    font-weight: normal;
+    color: #666;
+    font-size: 0.9em;
+}
+/* Edit Icon and Remove X (for image_cb61a2.png style) */
+.product-name .edit-icon, 
+.product-price-details .remove-x {
+    color: var(--secondary-color);
+    margin-left: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.product-price-details .remove-x {
+    color: #999;
+}
+/* Empty Cart Message */
+.empty-cart-message {
+    padding: 20px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-top: none;
+    font-weight: 500;
+    color: #777;
+    border-radius: 0 0 5px 5px;
+}
+/* Empty Cart Button */
+.empty-cart-btn {
+    background-color: #dc3545; /* Red */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.empty-cart-btn:hover {
+    background-color: #c82333;
+}
 .order-summary {
     flex: 1; /* Takes up remaining space */
-    min-width: 250px;
-    background-color: white; /* Darker grey background */
+   min-width: 250px;
+   background-color: white; /* Darker grey background */
     color: black;
     padding: 15px;
     border: 3px solid #555555;
@@ -715,75 +872,6 @@ table th {
     text-align: right;
     margin-bottom: 15px;
 }
-
-/* Product Table Header */
-.product-table-header {
-    display: flex;
-    background-color: #3b97b0; /* Teal/Blue color for the header */
-    color: white;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px 5px 0 0;
-}
-
-.header-item.product-col {
-    flex: 2;
-}
-
-.header-item.price-col {
-    flex: 1;
-    text-align: right;
-}
-
-/* Empty Cart Message */
-.empty-cart-message {
-    padding: 20px 15px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-top: none;
-    font-weight: 500;
-}
-
-/* Promo Code Section */
-.promo-code-section h4 {
-    background-color: #f1f1f1; /* Light grey background */
-    padding: 10px 15px;
-    margin-top: 15px;
-    font-size: 1em;
-    font-weight: bold;
-}
-
-.promo-input-group {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-top: none;
-}
-
-.promo-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-.validate-btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #fff; /* White background for the button */
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.validate-btn:hover {
-    background-color: #eee;
-}
-
 /* Checkout Button */
 .checkout-btn {
     display: flex;
@@ -792,7 +880,7 @@ table th {
     width: 100%;
     padding: 15px;
     background-color: #4CAF50; /* Green background */
-    color: white;
+   color: white;
     font-size: 1.2em;
     font-weight: bold;
     border: none;
@@ -801,14 +889,20 @@ table th {
     transition: background-color 0.3s;
     margin-bottom: 10px;
 }
-
+.checkout-btn[disabled],
+.checkout-btn.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none; /* Prevent clicks */
+}
 .checkout-btn:hover {
     background-color: #45a049;
 }
 
 .checkout-btn i {
     margin-left: 5px;
-}
+}*/
 
 /* Continue Shopping Link */
 .continue-shopping {
@@ -816,7 +910,7 @@ table th {
 }
 
 .continue-shopping a {
-    color: rgba(0, 0, 0, 0.575); /* Light color for the link */
+    color: rgba(0, 0, 0, 0.575); /* Light color for the link*/ 
     text-decoration: none;
     font-size: 0.9em;
 }
@@ -830,7 +924,47 @@ table th {
     height: 1px;
     background: #ccc;
     margin: 20px 0;
+}*/
+/*-----------------password strength-------------------*/
+.password-strength {
+  margin-top: 5px;
 }
+
+#strengthBar {
+  height: 6px;
+  width: 0%;
+  background: red;
+  border-radius: 3px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+#strengthText {
+  display: block;
+  font-size: 12px;
+  margin-top: 3px;
+  color: #555;
+}
+.password-rules {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.password-rules li {
+  margin-bottom: 3px;
+  transition: color 0.3s ease;
+}
+
+.password-rules li.valid {
+  color: green;
+}
+
+.password-rules li.invalid {
+  color: red;
+}
+
 /*/////////////////// CHECKOUT SECTION ////////////////////////////*/
 /* General Layout */
 /* Button Styling (use your existing styling for consistency) */
@@ -1195,14 +1329,220 @@ footer {
 .btn-facebook:hover {
   transform: translateY(-2px);
 }
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
 
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* space for eye icon */
+    box-sizing: border-box;
+}
+
+.password-wrapper .toggle-password {
+    position: absolute;
+    right: 10px;      /* places the icon inside input on the right */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.password-wrapper .toggle-password:hover {
+    color: #333;
+}
 /* Responsive */
 @media (max-width: 500px) {
   .register-card {
     padding: 1.8rem 1.2rem;
   }
 }
+/* --- Show Password Checkbox Styling --- */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
 
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #4CAF50; /* green theme, you can change to your brand color */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    color: #4CAF50;
+    font-weight: 500;
+}
+/* Error message styling */
+.error-message {
+    display: block;
+    color: red; /* red color for visibility */
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Optional: Animate when error appears */
+.error-message:empty {
+    display: none;
+}
+.user-icon {
+    cursor: pointer;
+}
+#payment-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+}
+
+#close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.domain-tables-container {
+    display: none;
+    margin-top: 20px;
+}
+.domain-tables-container.active {
+    display: block;
+}
+.domain-table {
+    display: none;
+}
+.domain-table.active {
+    display: block;
+}
+.domain-tabs li.active {
+    background: #007bff;
+    color: white;
+}
+.content-section {
+  display: none;
+}
+#register_domain {
+  display: block;
+}
+/* =========================
+   Checkout Forms Styling
+   ========================= */
+
+/* General Form Headers */
+#checkout h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    /*border-left: 4px solid #4CAF50; /* Green accent bar */
+    padding-left: 0.5rem;
+}
+#checkout #full-account-form{
+    text-align: center;
+}
+#checkout #full-account-form .form-row {
+    display: flex;
+    flex-wrap: wrap; /* allow wrapping to two lines */
+    gap: 15px;
+}
+#checkout #full-account-form input[type="text"],
+#checkout #full-account-form input[type="email"],
+#checkout #full-account-form input[type="password"] {
+    flex: 1 1 calc(50% - 15px); /* two inputs per row */
+    min-width: 200px; /* prevent inputs from being too small */
+}
+/* Existing Customer Login stays single line */
+#checkout #existing-login-section .form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap; /* keep single line */
+}
+#checkout #existing-login-section input[type="email"],
+#checkout #existing-login-section input[type="password"] {
+    flex: 1;
+    min-width: 150px;
+}
+/* Form Rows - single line */
+#checkout .form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap; /* keep everything in one line */
+}
+/* Inputs */
+#checkout input[type="text"],
+#checkout input[type="email"],
+#checkout input[type="password"] {
+    flex: 1; /* equal width for all inputs */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    min-width: 150px; /* prevent inputs from shrinking too much */
+}
+#checkout input[type="text"]:focus,
+#checkout input[type="email"]:focus,
+#checkout input[type="password"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+/* Buttons */
+#checkout button.btn {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px; /* spacing from inputs */
+}
+#checkout button.btn:hover {
+    background-color: #45a049;
+}
+/* Responsive: center forms on small screens */
+@media (max-width: 600px) {
+    #checkout #full-account-form,
+    #checkout #existing-login-section {
+        margin: 0 auto 20px;
+        width: 90%;
+    }
+}
 /* ==============================
    Support Ticket Form Styles
 ============================== */
@@ -1307,6 +1647,167 @@ select:focus {
   background-color: white;
   color: var(--accent-color);
 }
+/* Quantity controls inside cart items */
+/*.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    gap: 5px;
+}
+
+.quantity-controls button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.quantity-controls button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.quantity-controls .quantity {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+/* =========================
+   PAYMENT POPUP STYLING
+   ========================= */
+#payment-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(3px);
+}
+
+#payment-popup .popup-content {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 90%;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+#payment-popup h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #1a73e8;
+}
+
+#payment-popup p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+#payment-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#payment-popup ul li {
+    background: #f7f9fc;
+    border-left: 4px solid #1a73e8;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+#payment-popup ul li strong {
+    color: #0d47a1;
+}
+
+#payment-popup .copy-text {
+    background: #eef3fa;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-family: monospace;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+#payment-popup .copy-btn {
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#payment-popup .copy-btn:hover {
+    background: #0f5bd4;
+}
+
+#payment-popup address {
+    font-style: normal;
+    background: #f7f9fc;
+    padding: 10px 12px;
+    border-left: 4px solid #1a73e8;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+#payment-popup #close-popup {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: #ff5c5c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#payment-popup #close-popup:hover {
+    background: #d44;
+}
+.total-amount-box {
+    background: #e8f0fe;
+    padding: 10px 14px;
+    margin-top: 18px;
+    border-left: 4px solid #1a73e8;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d47a1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 /* ==============================
    Responsive Design
 ============================== */

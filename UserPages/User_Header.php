@@ -10,7 +10,9 @@
 
             <!-- Right side: Navbar + Account + Cart -->
             <div class="right-section">
-                <?php $current_page = basename($_SERVER['PHP_SELF']); ?>
+                <?php 
+                    $current_page = basename($_SERVER['PHP_SELF']); 
+                ?>
                 <nav class="navbar" id="menulist">
                     <a href="home.php" class="<?= ($current_page === 'home.php') ? 'active' : '' ?>">home</a>
                     <a href="services.php" class="<?= ($current_page === 'services.php') ? 'active' : '' ?>">services</a>
@@ -22,7 +24,7 @@
                         <p>account</p>
                         <i class="fa-solid fa-square-check"></i>
                     </div>
-                    <a href="../UserPages/services.php" data-target="view_cart" class="icon-link">
+                    <a href="#" class="icon-link view-cart-link">
                         <button class="btn">view cart</button>
                     </a>
                 </div>
@@ -31,12 +33,26 @@
 
         <!-- Profile Section -->
         <div class="profile-detail">
-            <h3>Sign up or Sign in</h3>
-            <div class="flex-btn">
-                <a href="login.php" class="btn">Login</a>
-                <a href="register.php" class="btn">Register</a>
-                <p>Forget password?</p>
-            </div>
+            <?php if (isset($_SESSION['User_Name'])): ?>
+                <h3>
+                    <a href="profile.php" class="user-name-link">
+                        <?= htmlspecialchars($_SESSION['User_Name']); ?>
+                    </a>
+                </h3>
+                <div class="flex-btn">
+                    <a href="logout.php" class="btn logout-btn">Logout</a>
+                    <p><a href="forgot_password.php">Forgot password?</a></p>
+                </div>
+            <?php else: ?>
+                <h3>Sign up or Sign in</h3>
+                <div class="flex-btn">
+                    <a href="login.php" class="btn">Login</a>
+                    <a href="register.php" class="btn">Register</a>
+                    <p><a href="forgot_password.php">Forgot password?</a></p>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
 </header>
+
+

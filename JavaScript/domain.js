@@ -163,27 +163,25 @@ document.addEventListener("DOMContentLoaded", function () {
             if (highlightId && item.id == highlightId) div.classList.add('highlight');
 
             div.innerHTML = `<div class="product-col">
-                ${item.category_name} - ${item.service_title}
-                ${item.domain_name ? `<br><small>Domain: ${item.domain_name}</small>` : ''}
-                ${item.billing_cycle ? `<br><small>Billing: ${item.billing_cycle}</small>` : ''}
-                <div class="quantity-controls">
-                    <button class="decrease-btn" data-index="${index}">-</button>
-                    <span class="quantity">${quantity}</span>
-                    <button class="increase-btn" data-index="${index}">+</button>
+                    ${item.category_name} - ${item.service_title}
+                    ${item.domain_name ? `<br><small>Domain: ${item.domain_name}</small>` : ''}
+                    <div class="quantity-controls">
+                        <button class="decrease-btn" data-index="${index}">-</button>
+                        <span class="quantity">${quantity}</span>
+                        <button class="increase-btn" data-index="${index}">+</button>
+                    </div>
                 </div>
-            </div>
-            <div class="price-col">
-                <strong>R${lineTotal.toFixed(2)} ZAR</strong>
-                <button class="remove-btn" data-index="${index}">Remove</button>
-            </div>`;
+                <div class="price-col">
+                    R${unitPrice.toFixed(2)} ZAR &times; ${quantity} = <strong>R${lineTotal.toFixed(2)} ZAR</strong>
+                    <button class="remove-btn" data-index="${index}">Remove</button>
+                </div>`;
             cartContent.appendChild(div);
         });
 
         if (subtotalElem) subtotalElem.textContent = `R${subtotal.toFixed(2)} ZAR`;
         if (totalElem) totalElem.textContent = `R${subtotal.toFixed(2)} ZAR`;
         if (checkoutTotalBox) checkoutTotalBox.textContent = `R${subtotal.toFixed(2)} ZAR`;
-        // Keep payment popups (Bank/Mail) in sync with latest total
-        window.currentCartTotal = subtotal.toFixed(2);
+
         // Remove button handlers
         cartContent.querySelectorAll('.remove-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -266,24 +264,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const domainName = domainInput.value.trim() + selected.value;
             const price = parseFloat(selected.dataset.price || 0);
-
-            // ✅ Retrieve service ID from sessionStorage (set when user selected a hosting/ecommerce plan)
             const pendingServiceId = sessionStorage.getItem('pendingServiceId');
 
-            if (!pendingServiceId) {
-                swal("Error", "No pending service found. Please choose a service first.", "error");
-                return;
-            }
-
-            // ✅ Send domain + serviceId to PHP
             fetch("../UserPages/save_domain.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    serviceId: pendingServiceId,
-                    domainName: domainName,
-                    price: price
-                })
+                body: JSON.stringify({ domainName, price })
             })
             .then(async res => {
                 const text = await res.text();
@@ -297,9 +283,11 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 if (data.success) {
-                    // ✅ Add the selected service + domain to cart
-                    sessionStorage.removeItem('pendingServiceId');
-                    addServiceToCart(pendingServiceId, domainName, price);
+                    // Add service + domain to cart if pending
+                    if (pendingServiceId) {
+                        sessionStorage.removeItem('pendingServiceId');
+                        addServiceToCart(pendingServiceId, domainName, price);
+                    }
 
                     swal("Success", `${domainName} and your service have been added to cart.`, "success");
                     setTimeout(() => showSection('view_cart'), 1000);
@@ -312,6 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+
 
     // =========================
     // ORDER BUTTONS
@@ -421,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ==============================
+    //==============================
     // TRANSFER DOMAIN FORM
     // ==============================
     const transferForm = document.getElementById("transferDomainForm");
@@ -450,7 +439,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(async res => {
                 const text = await res.text();
                 try {
-                    return JSON.parse(text);
+                    const data = JSON.parse(text);
+                    return data;
                 } catch (err) {
                     console.error("Server returned invalid JSON:", text);
                     swal("Server Error", "Invalid response:\n" + text, "error");
@@ -459,11 +449,8 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 if (data.success) {
-                    // Automatically add Domain Transfer (ID=30) to cart
-                    addServiceToCart(30, domain, parseFloat(data.service?.price || 500));
-
-                    swal("Success", `Domain transfer for ${domain} added to cart!`, "success");
-                    setTimeout(() => showSection('view_cart'), 800); // Go to cart after short delay
+                    swal("Success", data.message || "Domain transfer added to cart!", "success");
+                    fetchCart(); // refresh cart
                 } else {
                     swal("Error", data.message || "Failed to add domain transfer.", "error");
                 }
@@ -474,7 +461,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
     // ===== Update cart count badge =====
     function updateCartCount(quantity = 1) {
         const cartCountElem = document.querySelector("#cartCount");

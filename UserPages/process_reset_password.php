@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../includes/db_connection.php'; // $mysqli
+require_once __DIR__ . '/../includes/db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -8,61 +8,66 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $token = trim($_POST['token'] ?? '');
-$password = $_POST['password'] ?? '';
-$confirm = $_POST['confirm_password'] ?? '';
+$new_password = $_POST['new_password'] ?? '';
+$confirm_password = $_POST['confirm_password'] ?? '';
 
-// Basic checks
-if ($password === '' || $confirm === '') {
-    $_SESSION['reset_error'] = "Please fill all fields.";
-    header("Location: reset_password.php?token=" . urlencode($token));
+if (empty($token)) {
+    $_SESSION['reset_error'] = 'Invalid reset token.';
+    header('Location: reset_password.php?token=' . urlencode($token));
     exit;
 }
 
-if ($password !== $confirm) {
-    $_SESSION['reset_error'] = "Passwords do not match.";
-    header("Location: reset_password.php?token=" . urlencode($token));
+if (empty($new_password) || empty($confirm_password)) {
+    $_SESSION['reset_error'] = 'Please fill in both password fields.';
+    header('Location: reset_password.php?token=' . urlencode($token));
     exit;
 }
 
-if (strlen($password) < 6) {
-    $_SESSION['reset_error'] = "Password must be at least 6 characters.";
-    header("Location: reset_password.php?token=" . urlencode($token));
+if ($new_password !== $confirm_password) {
+    $_SESSION['reset_error'] = 'Passwords do not match.';
+    header('Location: reset_password.php?token=' . urlencode($token));
     exit;
 }
 
-// Verify token and get email
-$stmt = $mysqli->prepare("SELECT email, expires_at FROM password_resets WHERE token = ? LIMIT 1");
+// Password strength check
+if (strlen($new_password) < 9 || 
+    !preg_match('/[A-Z]/', $new_password) ||
+    !preg_match('/[0-9]/', $new_password) ||
+    !preg_match('/[!@#$%^&*]/', $new_password)) {
+    $_SESSION['reset_error'] = 'Password must be at least 9 characters, include uppercase, number, and special char.';
+    header('Location: reset_password.php?token=' . urlencode($token));
+    exit;
+}
+
+// Verify token
+$stmt = $mysqli->prepare("SELECT email FROM password_resets WHERE token = ? AND expires_at > NOW() LIMIT 1");
 $stmt->bind_param("s", $token);
 $stmt->execute();
-$res = $stmt->get_result();
+$result = $stmt->get_result();
 
-if ($res->num_rows === 0) {
-    exit('Invalid or expired token.');
+if ($result->num_rows === 0) {
+    $_SESSION['reset_error'] = 'Invalid or expired token.';
+    header('Location: reset_password.php');
+    exit;
 }
 
-$row = $res->fetch_assoc();
-if (strtotime($row['expires_at']) < time()) {
-    // expired
-    $del = $mysqli->prepare("DELETE FROM password_resets WHERE token = ?");
-    $del->bind_param("s", $token);
-    $del->execute();
-    exit('This reset link has expired.');
-}
-
+$row = $result->fetch_assoc();
 $email = $row['email'];
+$stmt->close();
 
-// All good — update password
-$hash = password_hash($password, PASSWORD_DEFAULT);
+// Update password
+$new_hash = password_hash($new_password, PASSWORD_DEFAULT);
 $update = $mysqli->prepare("UPDATE users SET password_hash = ? WHERE email = ?");
-$update->bind_param("ss", $hash, $email);
+$update->bind_param("ss", $new_hash, $email);
 $update->execute();
 
-// Delete token record
+// Delete token after reset
 $del = $mysqli->prepare("DELETE FROM password_resets WHERE token = ?");
 $del->bind_param("s", $token);
 $del->execute();
 
-$_SESSION['reset_success'] = "Your password has been reset. You may now log in.";
-header("Location: login.php");
+// Set success message
+$_SESSION['reset_success'] = 'Your password has been reset successfully. Please log in.';
+header('Location: login.php');
 exit;
 ?>

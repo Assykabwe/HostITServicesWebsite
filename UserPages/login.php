@@ -18,14 +18,27 @@ unset($_SESSION['old_data'], $_SESSION['login_errors']);
   </head>
   <body>
 
+      <?php if (!empty($_SESSION['reset_success'])): ?>
+        <div class="popup-message success">
+          <?= htmlspecialchars($_SESSION['reset_success']) ?>
+        </div>
+        <?php unset($_SESSION['reset_success']); ?>
+      <?php endif; ?>
+
+      <?php if (!empty($_SESSION['login_errors']['email']) || !empty($_SESSION['login_errors']['password'])): ?>
+        <div class="popup-message error">
+          <?= htmlspecialchars($_SESSION['login_errors']['email'] ?? $_SESSION['login_errors']['password']) ?>
+        </div>
+        <?php unset($_SESSION['login_errors']); ?>
+      <?php endif; ?>
 
       <section class="register-section">
-        <!-- Logo Left -->
-        <a href="home.php" class="logo">
-          <img src="../Images/logo2.png" alt="Logo">
-            <span class="logo-text">Host IT Services</span>
-        </a>
         <div class="register-card">
+          <!-- Logo Left -->
+          <a href="home.php" class="logo">
+            <img src="../Images/logo2.png" alt="Logo">
+              <span class="logo-text">Host IT Services</span>
+          </a>
           <h2>Login</h2>
           <form action="../UserPages/process_login.php" method="post" id="loginForm">
             
@@ -61,18 +74,27 @@ unset($_SESSION['old_data'], $_SESSION['login_errors']);
             <a href="register.php" class="btn-link">Do not have an account? Register</a>
           </form>
 
-          <div class="divider"><span>or</span></div>
+          
+            <div class="divider"><span>or</span></div>
 
-          <div class="social-buttons">
-            <button class="btn-google">
-              <img src="https://img.icons8.com/color/20/000000/google-logo.png" alt="Google logo">
-              Login with Google
-            </button>
-            <button class="btn-facebook">
-              <i class="fa-brands fa-facebook-f"></i>
-              Login with Facebook
-            </button>
-          </div>
+            <div id="g_id_onload"
+                data-client_id="91986732784-rm8jn4iembogag5de5vj970i4jpshg69.apps.googleusercontent.com"
+                data-context="signin"
+                data-ux_mode="popup"
+                data-login_uri="http://localhost/HostITServicesPrototype/UserPages/callback.php"
+                data-auto_prompt="false">
+            </div>
+
+            <div class="g_id_signin"
+                data-type="standard"
+                data-shape="rectangular"
+                data-theme="outline"
+                data-text="signin_with"
+                data-size="large"
+                data-logo_alignment="left">
+            </div>
+
+            <script src="https://accounts.google.com/gsi/client" async defer></script>
         </div>
       </section>
 

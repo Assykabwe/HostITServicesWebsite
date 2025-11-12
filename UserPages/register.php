@@ -26,10 +26,11 @@
       <section class="register-section">
           <div class="register-card">
             <!-- Logo Left -->
-        <a href="home.php" class="logo">
-          <img src="../Images/logo2.png" alt="Logo">
-            <span class="logo-text">Host IT Services</span>
-        </a>
+            <a href="home.php" class="logo">
+              <img src="../Images/logo2.png" alt="Logo">
+                <span class="logo-text">Host IT Services</span>
+            </a>
+            <div class="divider"></div>
               <h2>Sign up</h2>
               <form action="../UserPages/process_register.php" method="post" id="registerForm">
                   <div class="form-group">
@@ -68,16 +69,26 @@
                   <div class="divider"><span>or</span></div>
 
                   <div class="social-buttons">
-                      <a href="../UserPages/google_login.php" class="btn-google">
-                        <img src="https://img.icons8.com/color/20/000000/google-logo.png" alt="Google logo">
-                        Register with Google
-                      </a>
-
-                    <button class="btn-facebook">
-                      <i class="fa-brands fa-facebook-f"></i>
-                      Register with Facebook
-                    </button>
+                  <div id="g_id_onload"
+                      data-client_id="91986732784-rm8jn4iembogag5de5vj970i4jpshg69.apps.googleusercontent.com"
+                      data-context="signin"
+                      data-ux_mode="popup"
+                      data-login_uri="http://localhost/HostITServicesPrototype/UserPages/callback.php"
+                      data-auto_prompt="false">
                   </div>
+
+                  <div class="g_id_signin"
+                      data-type="standard"
+                      data-shape="rectangular"
+                      data-theme="outline"
+                      data-text="signin_with"
+                      data-size="large"
+                      data-logo_alignment="left">
+                  </div>
+
+                  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+                </div>
               </form>
           </div>
       </section>

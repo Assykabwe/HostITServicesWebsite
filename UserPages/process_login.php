@@ -65,14 +65,13 @@ if ($stmt = $mysqli->prepare($sql)) {
     $_SESSION['User_Name'] = $full_name;
 
     // ✅ Set login success message for SweetAlert
-    $_SESSION['login_success'] = "Welcome back, $full_name!";
-    $stmt->close();
-    header('Location: ../UserPages/home.php');
+    $_SESSION['login_success'] = "Welcome back, " . htmlspecialchars($user['fullname']) . "!";
+    header("Location: home.php");
     exit;
-} else {
-    error_log("Prepare failed: " . $mysqli->error);
-    http_response_code(500);
-    exit('Server error');
-}
+    } else {
+        $_SESSION['login_error'] = "Invalid email or password.";
+        header("Location: login.php");
+        exit;
+    }
 ?>
 

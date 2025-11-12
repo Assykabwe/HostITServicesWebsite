@@ -1,4 +1,4 @@
-<footer>
+<footer> 
     <div class="overlay">
         <div class="footer-content">
             <div class="title">
@@ -6,7 +6,7 @@
             </div>
             <div class="inner-footer">
                 <div class="card">
-                    <p>Elevating your digital presence with reliable web solutions.<p>
+                    <p>Elevating your digital presence with reliable web solutions.</p>
                     <div class="street">
                         <p>2 Alwin Street Brooklyn, Capetown</p>
                         <p>+27 78 554 3814</p>
@@ -14,11 +14,17 @@
                     </div>
                 </div>
                 <div class="card">
-                    <h3>follow us</h3>
+                    <h3>Follow Us</h3>
                     <div class="social-links">
-                        <i class="bx bxl-instagram"></i>
-                        <i class="bx bxl-twitter"></i>
-                        <i class="bx bxl-youtube"></i>
+                        <a href="https://www.facebook.com/profile.php?id=61556558713611" target="_blank" title="Facebook">
+                            <i class="bx bxl-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/host_it_services/profilecard/?igsh=Mm9udzQzMHRqaW93" target="_blank" title="Instagram">
+                            <i class="bx bxl-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/host-it-services/" target="_blank" title="LinkedIn">
+                            <i class="bx bxl-linkedin"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -29,3 +35,4 @@
         </div>
     </div>
 </footer>
+

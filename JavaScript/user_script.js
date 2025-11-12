@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const totalElem = document.querySelector('.order-summary .totals-line .price');
 
         let subtotal = 0;
+        let lastServiceId = null; // Track previous service to group domain
 
         if (!cart || cart.length === 0) {
             emptyMessage.style.display = 'block';
@@ -162,9 +163,15 @@ document.addEventListener("DOMContentLoaded", function () {
             div.classList.add('plan-card');
             if (highlightId && item.id == highlightId) div.classList.add('highlight');
 
+            // Highlight domain under its service visually
+            let label = `${item.category_name} - ${item.service_title}`;
+            if (item.domain_name) {
+                // Only mark it as a “sub-item” if the previous item is same service
+                label = `&nbsp;&nbsp;&nbsp; Domain: ${item.domain_name}`;
+            }
+
             div.innerHTML = `<div class="product-col">
-                ${item.category_name} - ${item.service_title}
-                ${item.domain_name ? `<br><small>Domain: ${item.domain_name}</small>` : ''}
+                ${label}
                 ${item.billing_cycle ? `<br><small>Billing: ${item.billing_cycle}</small>` : ''}
                 <div class="quantity-controls">
                     <button class="decrease-btn" data-index="${index}">-</button>
@@ -177,14 +184,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="remove-btn" data-index="${index}">Remove</button>
             </div>`;
             cartContent.appendChild(div);
+
+            lastServiceId = item.id;
         });
 
         if (subtotalElem) subtotalElem.textContent = `R${subtotal.toFixed(2)} ZAR`;
         if (totalElem) totalElem.textContent = `R${subtotal.toFixed(2)} ZAR`;
         if (checkoutTotalBox) checkoutTotalBox.textContent = `R${subtotal.toFixed(2)} ZAR`;
-        // Keep payment popups (Bank/Mail) in sync with latest total
+
         window.currentCartTotal = subtotal.toFixed(2);
-        // Remove button handlers
+
+        // --- Attach event handlers ---
         cartContent.querySelectorAll('.remove-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const index = btn.dataset.index;
@@ -198,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        // Quantity decrease
         cartContent.querySelectorAll('.decrease-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const index = btn.dataset.index;
@@ -212,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        // Quantity increase
         cartContent.querySelectorAll('.increase-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const index = btn.dataset.index;
@@ -227,6 +235,47 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         updateCheckoutButtonState(cart);
+    }
+
+
+    // Separate function to attach cart buttons
+    function attachCartButtons() {
+        cartContent.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.onclick = () => {
+                const index = btn.dataset.index;
+                fetch('remove_from_cart.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'index=' + index
+                })
+                .then(res => res.json())
+                .then(data => renderCart(data.cart || []));
+            };
+        });
+        cartContent.querySelectorAll('.decrease-btn').forEach(btn => {
+            btn.onclick = () => {
+                const index = btn.dataset.index;
+                fetch('update_cart_quantity.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `index=${index}&action=decrease`
+                })
+                .then(res => res.json())
+                .then(data => renderCart(data.cart || []));
+            };
+        });
+        cartContent.querySelectorAll('.increase-btn').forEach(btn => {
+            btn.onclick = () => {
+                const index = btn.dataset.index;
+                fetch('update_cart_quantity.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `index=${index}&action=increase`
+                })
+                .then(res => res.json())
+                .then(data => renderCart(data.cart || []));
+            };
+        });
     }
 
     // =========================
@@ -267,51 +316,84 @@ document.addEventListener("DOMContentLoaded", function () {
             const domainName = domainInput.value.trim() + selected.value;
             const price = parseFloat(selected.dataset.price || 0);
 
-            // ✅ Retrieve service ID from sessionStorage (set when user selected a hosting/ecommerce plan)
             const pendingServiceId = sessionStorage.getItem('pendingServiceId');
-
             if (!pendingServiceId) {
                 swal("Error", "No pending service found. Please choose a service first.", "error");
                 return;
             }
 
-            // ✅ Send domain + serviceId to PHP
-            fetch("../UserPages/save_domain.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    serviceId: pendingServiceId,
-                    domainName: domainName,
-                    price: price
-                })
+            // --- Fetch service info to display in popup before adding ---
+            fetch('get_service.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `service_id=${pendingServiceId}`
             })
-            .then(async res => {
-                const text = await res.text();
-                try {
-                    return JSON.parse(text);
-                } catch (err) {
-                    console.error("Invalid JSON from save_domain.php:", text);
-                    swal("Error", "Could not save domain. Invalid server response.", "error");
-                    throw err;
+            .then(res => res.json())
+            .then(serviceData => {
+                if (serviceData.status !== 'success' || !serviceData.service) {
+                    swal("Error", "Could not fetch service info.", "error");
+                    return;
                 }
-            })
-            .then(data => {
-                if (data.success) {
-                    // ✅ Add the selected service + domain to cart
-                    sessionStorage.removeItem('pendingServiceId');
-                    addServiceToCart(pendingServiceId, domainName, price);
 
-                    swal("Success", `${domainName} and your service have been added to cart.`, "success");
-                    setTimeout(() => showSection('view_cart'), 1000);
-                } else {
-                    swal("Error", data.message || "Could not save domain.", "error");
-                }
+                const serviceTitle = serviceData.service.service_title || "Service";
+                const categoryName = serviceData.service.category_name || "Category";
+                const servicePrice = parseFloat(serviceData.service.price || 0);
+
+                // --- Show confirmation popup with breakdown ---
+                swal({
+                    title: "Confirm Selection",
+                    html: `
+                        <p><strong>Service:</strong> ${categoryName} - ${serviceTitle}</p>
+                        <p><strong>Domain:</strong> ${domainName}</p>
+                        <p><strong>Service Price:</strong> R${servicePrice.toFixed(2)}</p>
+                        <p><strong>Domain Price:</strong> R${price.toFixed(2)}</p>
+                        <p><strong>Total:</strong> R${(servicePrice + price).toFixed(2)}</p>
+                    `,
+                    icon: "info",
+                    buttons: {
+                        cancel: "Cancel",
+                        confirm: { text: "Add to Cart", value: true }
+                    }
+                }).then(addConfirmed => {
+                    if (!addConfirmed) return;
+
+                    // --- Save domain first ---
+                    fetch("../UserPages/save_domain.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ domainName: domainName, price: price })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data.success) {
+                            swal("Error", data.message || "Could not save domain.", "error");
+                            return;
+                        }
+
+                        // --- Add service to cart ---
+                        addServiceToCart(pendingServiceId);
+
+                        // --- Add domain only to cart ---
+                        addServiceToCart(null, domainName, price);
+
+                        sessionStorage.removeItem('pendingServiceId');
+
+                        swal("Success", `${domainName} and your service have been added to cart.`, "success");
+                        setTimeout(() => showSection('view_cart'), 1000);
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        swal("Error", "Could not save domain.", "error");
+                    });
+                });
             })
             .catch(err => {
                 console.error(err);
+                swal("Error", "Could not fetch service info.", "error");
             });
         });
     }
+
 
     // =========================
     // ORDER BUTTONS
@@ -349,18 +431,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // =========================
     // ADD SERVICE TO CART
     // =========================
-    function addServiceToCart(serviceId, domainName = null, domainPrice = 0) {
-        // Always fetch cart from server after adding service
+    function addServiceToCart(serviceId = null, domainName = null, domainPrice = 0) {
+        const body = new URLSearchParams();
+        if (serviceId) body.append('service_id', serviceId);
+        if (domainName) body.append('domain_name', domainName);
+        if (domainPrice) body.append('domain_price', domainPrice);
+
         fetch('get_service.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `service_id=${serviceId}&domain_name=${domainName || ''}&domain_price=${domainPrice}`
+            body: body.toString()
         })
         .then(res => res.json())
         .then(data => {
             if (data.status === 'success') {
-                renderCart(data.cart || [], data.service.id);
-                swal("Added!", `${data.service.service_title} added to cart.`, "success");
+                renderCart(data.cart || []);
+                swal("Added!", `${domainName ? domainName : data.cart[0].service_title} added to cart.`, "success");
             } else {
                 swal("Error", data.message || "Could not add to cart", "error");
             }
@@ -370,6 +456,7 @@ document.addEventListener("DOMContentLoaded", function () {
             swal("Error", "Something went wrong", "error");
         });
     }
+
     // =========================
     // ADDITIONAL NAVIGATION BUTTONS
     // =========================
@@ -491,5 +578,14 @@ document.addEventListener("DOMContentLoaded", function () {
         count += 1;
         cartCountElem.innerText = count;
     }
+
+    /////////////////////desable and active renew button in home page///////////
+    document.querySelectorAll(".renew-btn.disabled").forEach(btn => {
+        btn.addEventListener("click", e => {
+            e.preventDefault();
+            const tooltip = btn.getAttribute("title") || "Renew not available yet";
+            swal("Notice", tooltip, "info");
+        });
+    });
 
 });

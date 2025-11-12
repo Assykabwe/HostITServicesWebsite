@@ -21,7 +21,6 @@ if ($res->num_rows === 0) {
 
 $row = $res->fetch_assoc();
 if (strtotime($row['expires_at']) < time()) {
-    // token expired - cleanup and message
     $del = $mysqli->prepare("DELETE FROM password_resets WHERE token = ?");
     $del->bind_param("s", $token);
     $del->execute();
@@ -32,57 +31,88 @@ $reset_email = $row['email'];
 ?>
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Reset Password</title>
-        <link rel="stylesheet" href="../CSS/user_style.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-        <script src="../JavaScript/RegisterLoginReset.js" defer></script>
-        <script src="../JavaScript/user_script.js" defer></script>
-        <script></script>
-    </head>
-    <body>
-        <?php include '../UserPages/User_Header.php'; ?>
+<head>
+    <meta charset="utf-8">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="../CSS/user_style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+</head>
+<body>
+<?php include '../UserPages/User_Header.php'; ?>
 
-        <section class="register-section">
-            <!-- Logo Left -->
-            <a href="home.php" class="logo">
+<section class="register-section">
+    <div class="register-card">
+        <a href="home.php" class="logo">
             <img src="../Images/logo2.png" alt="Logo">
-                <span class="logo-text">Host IT Services</span>
-            </a>
-            <div class="register-card">
-                <h2>Set a New Password</h2>
+            <span class="logo-text">Host IT Services</span>
+        </a>
+        <h2>Set a New Password</h2>
 
-                <?php if (!empty($_SESSION['reset_error'])): ?>
-                    <div class="error-message"><?= htmlspecialchars($_SESSION['reset_error']) ?></div>
-                    <?php unset($_SESSION['reset_error']); endif; ?>
+        <form id="resetPasswordForm" action="process_reset_password.php" method="POST">
+            <input type="hidden" name="token" value="<?= htmlspecialchars($token, ENT_QUOTES, 'UTF-8') ?>">
 
-                <form id="resetPasswordForm" action="process_reset_password.php" method="POST">
-                    <input type="hidden" name="token" value="<?= htmlspecialchars($token, ENT_QUOTES, 'UTF-8') ?>">
-
-                    <div class="form-group">
-                        <label for="newPassword">New Password:</label>
-                        <input type="password" id="newPassword" name="new_password" required>
-                        <small id="newPasswordError" class="error-message"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="confirmNewPassword">Confirm Password:</label>
-                        <input type="password" id="confirmNewPassword" name="confirm_password" required>
-                        <small id="confirmNewPasswordError" class="error-message"></small>
-                    </div>
-
-                    <div class="checkbox-group"> 
-                        <input type="checkbox" id="showLoginPassword">
-                        <label for="showResetPasswords">Show Passwords</label>
-                    </div>
-
-                    <button type="submit" class="btn">Reset Password</button>
-                </form>
+            <div class="form-group">
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="new_password" required>
+                <small id="newPasswordError" class="error-message"></small>
             </div>
-        </section>
 
-        <?php include '../Components/footer.php'; ?>
-    </body>
+            <div class="form-group">
+                <label for="confirmNewPassword">Confirm Password:</label>
+                <input type="password" id="confirmNewPassword" name="confirm_password" required>
+                <small id="confirmNewPasswordError" class="error-message"></small>
+            </div>
+
+            <div class="checkbox-group"> 
+                <input type="checkbox" id="showResetPasswords">
+                <label for="showResetPasswords">Show Passwords</label>
+            </div>
+
+            <button type="submit" class="btn">Reset Password</button>
+        </form>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("resetPasswordForm");
+    const newPassword = document.getElementById("newPassword");
+    const confirmPassword = document.getElementById("confirmNewPassword");
+    const newError = document.getElementById("newPasswordError");
+    const confirmError = document.getElementById("confirmNewPasswordError");
+    // Toggle visibility
+    showPasswords?.addEventListener("change", () => {
+        const type = showPasswords.checked ? "text" : "password";
+        newPassword.type = type;
+        confirmPassword.type = type;
+    });
+
+    // Validate before submission
+    form.addEventListener("submit", (e) => {
+        newError.textContent = "";
+        confirmError.textContent = "";
+        let hasError = false;
+
+        if (newPassword.value.length < 9 ||
+            !/[A-Z]/.test(newPassword.value) ||
+            !/[0-9]/.test(newPassword.value) ||
+            !/[!@#$%^&*]/.test(newPassword.value)) {
+            newError.textContent = "Password must be 9+ chars with uppercase, number, and special char.";
+            hasError = true;
+        }
+
+        if (newPassword.value !== confirmPassword.value) {
+            confirmError.textContent = "Passwords do not match.";
+            hasError = true;
+        }
+
+        if (hasError) e.preventDefault();
+    });
+});
+</script>
+
+<?php include '../Components/footer.php'; ?>
+</body>
 </html>
+
 

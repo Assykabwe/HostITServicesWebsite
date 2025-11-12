@@ -25,6 +25,11 @@
 
       <section class="register-section">
           <div class="register-card">
+            <!-- Logo Left -->
+        <a href="home.php" class="logo">
+          <img src="../Images/logo2.png" alt="Logo">
+            <span class="logo-text">Host IT Services</span>
+        </a>
               <h2>Sign up</h2>
               <form action="../UserPages/process_register.php" method="post" id="registerForm">
                   <div class="form-group">
@@ -52,7 +57,7 @@
                   </div>
 
                   <div class="checkbox-group"> 
-                      <input type="checkbox" id="showResetPasswords">
+                      <input type="checkbox" id="showRegisterPasswords">
                       <label for="showResetPasswords">Show Passwords</label>
                   </div>
 

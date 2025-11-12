@@ -20,6 +20,11 @@ unset($_SESSION['old_data'], $_SESSION['login_errors']);
 
 
       <section class="register-section">
+        <!-- Logo Left -->
+        <a href="home.php" class="logo">
+          <img src="../Images/logo2.png" alt="Logo">
+            <span class="logo-text">Host IT Services</span>
+        </a>
         <div class="register-card">
           <h2>Login</h2>
           <form action="../UserPages/process_login.php" method="post" id="loginForm">
@@ -46,7 +51,7 @@ unset($_SESSION['old_data'], $_SESSION['login_errors']);
 
             <!-- Show Password Checkbox -->
             <div class="checkbox-group"> 
-              <input type="checkbox" id="showResetPasswords">
+              <input type="checkbox" id="showLoginPassword">
               <label for="showResetPasswords">Show Password</label>
             </div>
 

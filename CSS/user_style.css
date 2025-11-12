@@ -924,7 +924,35 @@ table th {
     height: 1px;
     background: #ccc;
     margin: 20px 0;
-}*/
+}
+/* Logo Styles */
+.register-section .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between image and text */
+    margin-bottom: 30px;
+    text-decoration: none;
+    color: #333; /* logo text color */
+}
+
+.register-section .logo img {
+    width: 60px;   /* adjust size as needed */
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px; /* optional: slightly rounded edges */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* subtle shadow */
+    transition: transform 0.2s ease;
+}
+
+.register-section .logo:hover img {
+    transform: scale(1.05); /* slight zoom on hover */
+}
+
+.register-section .logo .logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 /*-----------------password strength-------------------*/
 .password-strength {
   margin-top: 5px;

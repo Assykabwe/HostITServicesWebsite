@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    background: #f7f8fa;
+}
+
+/* Login Page */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.login-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 320px;
+    text-align: center;
+}
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+.error { color: red; margin-bottom: 10px; }
+
+/* Dashboard */
+.admin-header {
+    background: #1a1a2e;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-sidebar {
+    width: 220px;
+    background: #16213e;
+    color: white;
+    height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+}
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.admin-sidebar li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+}
+.admin-sidebar li a:hover {
+    background: #0f3460;
+}
+.admin-container {
+    display: flex;
+}
+.admin-main {
+    margin-left: 220px;
+    padding: 30px;
+}
+.stats-grid {
+    display: flex;
+    gap: 20px;
+}
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    flex: 1;
+}
+/* Tables */
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.admin-table th {
+    background: #1a1a2e;
+    color: white;
+}
+
+.admin-table tr:hover {
+    background: #f3f6ff;
+}
+
+.delete-btn {
+    background: #e63946;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.delete-btn:hover {
+    background: #c1121f;
+}
+select {
+    padding: 6px 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.update-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.update-btn:hover {
+    background-color: #0056b3;
+}
+/* Edit mode buttons */
+.edit-mode .action-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Update button (green) */
+.edit-mode .action-btn:nth-child(1) {
+    background-color: #4CAF50; /* green */
+    color: white;
+}
+
+.edit-mode .action-btn:nth-child(1):hover {
+    background-color: #45a049;
+}
+
+/* Cancel button (gray) */
+.edit-mode .action-btn:nth-child(2) {
+    background-color: #777;
+    color: white;
+}
+
+.edit-mode .action-btn:nth-child(2):hover {
+    background-color: #555;
+}
+
+/* Keep Delete button red */
+.admin-table .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.admin-table .delete-btn:hover {
+    background-color: #c82333;
+}
+

@@ -45,6 +45,11 @@ $reset_email = $row['email'];
         <?php include '../UserPages/User_Header.php'; ?>
 
         <section class="register-section">
+            <!-- Logo Left -->
+            <a href="home.php" class="logo">
+            <img src="../Images/logo2.png" alt="Logo">
+                <span class="logo-text">Host IT Services</span>
+            </a>
             <div class="register-card">
                 <h2>Set a New Password</h2>
 
@@ -68,7 +73,7 @@ $reset_email = $row['email'];
                     </div>
 
                     <div class="checkbox-group"> 
-                        <input type="checkbox" id="showResetPasswords">
+                        <input type="checkbox" id="showLoginPassword">
                         <label for="showResetPasswords">Show Passwords</label>
                     </div>
 
